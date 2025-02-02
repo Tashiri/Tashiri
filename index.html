@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Love Calculator 😂❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff6b6b, #ff4757, #ff9f43);
+            background-size: cover;
+            text-align: center;
+            padding: 50px;
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            max-width: 400px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #ff3366;
+        }
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .emoji {
+            font-size: 50px;
+        }
+        .contest {
+            margin-top: 30px;
+            font-size: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>😂 Funny Love Calculator ❤️</h1>
+        <p>Answer the questions below to find your love score!</p>
+        <input type="text" id="name1" placeholder="Your Name">
+        <input type="text" id="name2" placeholder="Partner's Name">
+        
+        <h3>Question 1: How many times do you laugh together in a day?</h3>
+        <select id="question1">
+            <option value="0">0</option>
+            <option value="1">1-3 times</option>
+            <option value="2">4-6 times</option>
+            <option value="3">7+ times</option>
+        </select>
+
+        <h3>Question 2: Do you both agree on food choices?</h3>
+        <select id="question2">
+            <option value="0">Never agree</option>
+            <option value="1">Sometimes agree</option>
+            <option value="2">Mostly agree</option>
+            <option value="3">Always agree</option>
+        </select>
+
+        <h3>Question 3: How often do you have deep conversations?</h3>
+        <select id="question3">
+            <option value="0">Never</option>
+            <option value="1">Rarely</option>
+            <option value="2">Sometimes</option>
+            <option value="3">Often</option>
+        </select>
+        
+        <button onclick="calculateLove()">Calculate Love 💘</button>
+        <div id="result"></div>
+        <div id="advice"></div>
+    </div>
+    
+    <div class="contest">
+        <h2>🔥 Love Challenge! 🔥</h2>
+        <p>Get a love score of 90%+ and screenshot it! Share with your friends to prove your love! 😂</p>
+    </div>
+
+    <script>
+        function calculateLove() {
+            let name1 = document.getElementById("name1").value;
+            let name2 = document.getElementById("name2").value;
+            let question1 = parseInt(document.getElementById("question1").value);
+            let question2 = parseInt(document.getElementById("question2").value);
+            let question3 = parseInt(document.getElementById("question3").value);
+            
+            if (name1 === "" || name2 === "") {
+                alert("Oops! You forgot the names. Even love needs effort! 😜");
+                return;
+            }
+
+            // Calculating love score based on answers
+            let loveScore = Math.floor(Math.random() * 100) + 1 + question1 * 5 + question2 * 5 + question3 * 10;
+            loveScore = loveScore > 100 ? 100 : loveScore; // Making sure the score doesn't go above 100
+            
+            let message = "";
+            let advice = "";
+            let emoji = "";
+
+            if (loveScore > 90) {
+                message = "Soulmates detected! 💍💖 Start planning your wedding!";
+                advice = "Go book a honeymoon trip already!";
+                emoji = "😍";
+            } else if (loveScore > 70) {
+                message = "You two are a great match! 💘";
+                advice = "Plan more dates and make it official!";
+                emoji = "😘";
+            } else if (loveScore > 40) {
+                message = "It's complicated... 🤔";
+                advice = "Maybe bribe each other with food?";
+                emoji = "😅";
+            } else {
+                message = "Uh oh... Might be a friendship zone situation! 💔";
+                advice = "But hey, every great love starts with friendship!";
+                emoji = "😂";
+            }
+
+            document.getElementById("result").innerHTML = `<span class='emoji'>${emoji}</span><br>💑 Love Score: ${loveScore}% <br> ${message}`;
+            document.getElementById("advice").innerHTML = `<p>${advice}</p>`;
+        }
+    </script>
+</body>
+</html>
